@@ -19,3 +19,22 @@ $("#seachCityBtn").on("click", function (){
 // function upDateHistory (){
 //     items from localStorage and then do a loop to append to city history
 // }
+
+
+// //function from Jquery website 
+// $( "button.continue" ).html( "Next Step..." )
+
+// var hiddenBox = $( "#banner-message" );
+// $( "#button-container button" ).on( "click", function( event ) {
+//   hiddenBox.show();
+// });
+
+// $.ajax({
+//     url: "/api/getWeather",
+//     data: {
+//       zipcode: 10023
+//     },
+//     success: function( result ) {
+//       $( "#weather-temp" ).html( "<strong>" + result + "</strong> degrees" );
+//     }
+//   });
