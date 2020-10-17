@@ -1,17 +1,29 @@
+
+//function for the search button
+$(document).ready(function(){
+    $(".submitSearch").click(function(){
+        console.log("search button clicked");
+        // alert("search button clicked");
+    });
+});
+
+//function for saving to local storage and saving it in local storage
+
 var searchCity = localStorage.getItem("#searchCity");
+$("#searchCity").val(searchCity);
+console.log(searchCity);
 
-
-
-$("#seachCityBtn").on("click", function (){
-    var search = $("#searchCity").val();
-
-    localStorage.setItem('#searchCity', search);
-    console.log("search of city saved");
+$(document).ready(function(){
+    $("#searchCityBtn").click(function(){
+        var searchCity = $("#searchCity").val();
+        localStorage.setItem('#searchCity', searchCity);
+        alert("search of city saved");
 
     upDateHistory()
-
+    })
 })
 
+//need to create a funtion to have the Search City show up as a drop down in Most Recent Searches
 
 // function has a value to make 
 // and creating an if statement 
