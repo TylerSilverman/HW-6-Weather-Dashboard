@@ -16,7 +16,7 @@ console.log(searchCity);
 $(document).ready(function(){
     $("#searchCityBtn").click(function(){
         var searchCity = $("#searchCity").val();
-        localStorage.setItem('#searchCity', searchCity);
+        localStorage.setItem('#searchCity',searchCity);
         alert("search of city saved");
 
     upDateHistory()
