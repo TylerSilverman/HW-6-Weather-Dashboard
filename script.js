@@ -1,25 +1,28 @@
+var weatherSearch = [];
+
+// storedArray = JSON.parse(localStorage.getItem('#searchCity'));
 
 //function for the search button
-$(document).ready(function(){
-    $(".submitSearch").click(function(){
-        console.log("search button clicked");
-        // alert("search button clicked");
-    });
-});
+// $(document).ready(function(){
+//     $(".submitSearch").click(function(){
+//         console.log("search button clicked");
+//         // alert("search button clicked");
+//     });
+// });
 
 //function for saving to local storage and saving it in local storage
 
 var searchCity = localStorage.getItem("#searchCity");
-$("#searchCity").val(searchCity);
-console.log(searchCity);
 
 $(document).ready(function(){
-    $("#searchCityBtn").click(function(){
+    $("#searchCityBtn").click(function(e){
+        e.preventDefault();
         var searchCity = $("#searchCity").val();
-        localStorage.setItem('#searchCity',searchCity);
+        weatherSearch.push(searchCity)
+        localStorage.setItem('#searchCity',JSON.stringify(weatherSearch));
+        console.log(weatherSearch)
         alert("search of city saved");
-
-    upDateHistory()
+    
     })
 })
 
