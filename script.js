@@ -1,19 +1,18 @@
 var weatherSearch = [];
+var searchCity = $("#searchCity");
+
+
+
 
 // storedArray = JSON.parse(localStorage.getItem('#searchCity'));
 
-//function for the search button
-// $(document).ready(function(){
-//     $(".submitSearch").click(function(){
-//         console.log("search button clicked");
-//         // alert("search button clicked");
-//     });
-// });
-
 //function for saving to local storage and saving it in local storage
+// if(Array.isArray(storedArray)){
+//     citiesArray = storedArray;
+// }
 
-var searchCity = localStorage.getItem("#searchCity");
 
+//function for the search button and the local storage
 $(document).ready(function(){
     $("#searchCityBtn").click(function(e){
         e.preventDefault();
@@ -21,28 +20,30 @@ $(document).ready(function(){
         weatherSearch.push(searchCity)
         localStorage.setItem('#searchCity',JSON.stringify(weatherSearch));
         console.log(weatherSearch)
-        alert("search of city saved");
-    
+        searchCityList ();
     })
+   
 })
 
-//need to create a funtion to have the Search City show up as a drop down in Most Recent Searches
+//function to try and append the searches on the html page 
+function searchCityList () {
+    weatherSearch.forEach(function (cityName){
+        console.log("hello");
+        searchCity.addClass("search");
+        console.log("add class search works");
+        searchCity.text(cityName)
+        console.log("city name listed");
+        searchCity.attr("list", $(cityName));
+        console.log("what was appended")
+        searchCity.append(searchCity);
+    }
+)};
 
-// function has a value to make 
-// and creating an if statement 
+//     var searchCity = $("<div>");
+//     searchCityList ();
+ 
 
-// function upDateHistory (){
-//     items from localStorage and then do a loop to append to city history
-// }
-
-
-// //function from Jquery website 
-// $( "button.continue" ).html( "Next Step..." )
-
-// var hiddenBox = $( "#banner-message" );
-// $( "#button-container button" ).on( "click", function( event ) {
-//   hiddenBox.show();
-// });
+//function to get the weather from the api weather
 
 // $.ajax({
 //     url: "/api/getWeather",
