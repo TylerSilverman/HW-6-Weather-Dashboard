@@ -39,9 +39,9 @@
             <div class="body">
               <form role="form">
                 <div class="form-inline">
-                  <button type="submit" class=" btn btn-outline-success my-2 submitSearch" id= "searchCityBtn">Search</button>
-                  <input type="text" class="form-control mr-sm-2" id="searchCity" aria-label="search">
-                  <div id=""></div>
+                  <button type="submit" onclick='addData();' class=" btn btn-outline-success my-2 submitSearch" id= "searchBtn">Search</button>
+                  <input type="text" id="searchCity" name="text">
+                  <div id="cityList"></div>
                   <button type="reset" class=" btn btn-outline-success my-2 resetSearch" id= "resetCityBtn">Clear</button>
                 </div>
               </form>

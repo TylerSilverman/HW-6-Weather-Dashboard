@@ -1,4 +1,4 @@
-var weatherSearch = [];
+var myArray = [];
 var searchCity = $("#searchCity");
 
 
@@ -14,33 +14,30 @@ var searchCity = $("#searchCity");
 
 //function for the search button and the local storage
 $(document).ready(function(){
-    $("#searchCityBtn").click(function(e){
+    $("#searchBtn").click(function(e){
         e.preventDefault();
         var searchCity = $("#searchCity").val();
-        weatherSearch.push(searchCity)
-        localStorage.setItem('#searchCity',JSON.stringify(weatherSearch));
-        console.log(weatherSearch)
-        searchCityList ();
+        myArray.push(searchCity)
+        localStorage.setItem('#searchCity',JSON.stringify(myArray));
+        console.log(myArray)
     })
    
 })
 
 //function to try and append the searches on the html page 
-function searchCityList () {
-    weatherSearch.forEach(function (cityName){
-        console.log("hello");
-        searchCity.addClass("search");
-        console.log("add class search works");
-        searchCity.text(cityName)
-        console.log("city name listed");
-        searchCity.attr("list", $(cityName));
-        console.log("what was appended")
-        searchCity.append(searchCity);
-    }
-)};
+ function addData(){
+     var inputCityList = document.getElementById 
+     ("searchCity").value;
 
-//     var searchCity = $("<div>");
-//     searchCityList ();
+     myArray.push(inputCityList);
+
+     var pval = "";
+
+     for (i=0; i<myArray.length; i++) {
+        pval = pval + myArray[i] + "<br/>";
+    }
+    document.getElementById("cityList").innerHTML = pval;
+ }
  
 
 //function to get the weather from the api weather
