@@ -1,35 +1,45 @@
 var myArray = [];
 var searchCity = $("#searchCity");
-
+var apiKey = "760586900268b50d71c139dd75e4cb96"; 
 
 //function for the search button and the local storage
 $(document).ready(function(){
     $("#searchBtn").click(function(e){
         e.preventDefault();
         var searchCity = $("#searchCity").val();
-        var key = "f80ecd3a4607dd7ef4888b33f7c6f3e5";
 
         $.ajax({
-            // url: "api.openweathermap.org/data/2.5/weather",
-            url: "api.openweathermap.org/data/2.5/forecast",
-            dataType: "JSON",
+            url:"http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=760586900268b50d71c139dd75e4cb96",
             type: "GET",
-            data: {q:searchCity, appid:key, units: 'metric'},
-
-            success: function (data){
-                var weatherForecast = "";
+            dataType: "JSON",
+            data: {q:searchCity, appid:apiKey, units:'metric'},
+            
+            function (data){
+                var cityList = "";
                 $.each(data.weather, function(data, val){
-                    weatherForecast += "<p><br>" + data.name + val.icon + + data.main.temp + " &deg;C " + " | " + val.main + ", " + val.description
+                    cityList = "<p><br>" + data.name + val.icon + + data.main.temp + " &deg;C " + " | " + val.main + ", " + val.description
                 });
-                $("#searchCity").innerHTML(weatherForecast);
+                $("#searchCity").HTML(cityList);
+                console.log(apiKey);
             }
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
         console.log(myArray)
-        localStorage.getItem("#searchCity");
+        localStorage.getItem('#searchCity');
         
-    })
-})
+    });
+});
+
+
+// function formatWeatherSearch (jsonObject){
+//     var city_name = jsonObject.name
+//     var city_weather = jsonObject.weather[0].main;
+//     var city_temperature = jsonObject.main.temp;
+
+//     $("#city-name").text(city_name);
+//     $("#city-weather").text(city_weather);
+//     $("#city-temperature").text(city_temperature+ " Celsius");
+// }
 
 //function to try and append the searches on the html page 
  function addData(){
@@ -48,11 +58,3 @@ $(document).ready(function(){
 
  function resetData (){  
  };
-
- //function for the Query URL with the API key
-//  function updateQueryURL () {
-//      var queryURL = " ";
-//      var queryAPI = {"API-key": " "};
-//      console.log("API URL and Key")
-//  }
- 

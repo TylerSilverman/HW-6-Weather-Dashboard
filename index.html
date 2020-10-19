@@ -25,7 +25,8 @@
 </head>
     <!-- Start of the work  -->
 <body>
-      <nav class="navbar navbar-light bg-secondary align-text-middle">
+  <br>
+      <nav class="navbar navbar-light bg-secondary">
         <span h2 class="navbar-brand mb-3 text-white text-center">Weather Dashboard</span>
       </nav>
         <br>
@@ -37,16 +38,20 @@
               <i class="list-alt h3"></i><strong>Weather Search</strong>
             </div>
             <div class="body">
-              <form role="form">
-                <div class="form">
+              <form role="form col-md-4">
+                <div class="form col-md-6">
                   <input type="text" id="searchCity" name="text">
                   <div id="cityList"></div>
                   <br><br><br>
-                  <button type="submit" onclick='addData();' class="btn btn-outline-primary my-2 submitSearch" id= "searchBtn">Search</button>
-                  <button type="clear" onclick='clearList();' class=" btn btn-outline-secondary my-2 clearSearch" id= "clearCityBtn">Clear</button>
-                  <button type="reset" onclick='resetData();' class=" btn btn-outline my-2 resetSearchList" id= "resetCityBtn">Reset</button>
+                  <button type="submit" onclick='addData();' class="btn btn-primary my-2 submitSearch" id= "searchBtn">Search</button>
+                  <button type="clear" onclick='clearList();' class=" btn btn-secondary my-2 clearSearch" id= "clearCityBtn">Clear</button>
+                  <button type="reset" onclick='resetData();' class=" btn btn-secondary my-2 resetSearchList" id= "resetCityBtn">Reset</button>
                 </div>
               </form>
+              <p id = "city-name"></p>
+              <p id = "city-weather"></p>
+              <p id = "city-temperature"></p>
+            </div>
             </div>
           </div>
         </div>
