@@ -2,26 +2,16 @@ var myArray = [];
 var searchCity = $("#searchCity");
 
 
-
-
-// storedArray = JSON.parse(localStorage.getItem('#searchCity'));
-
-//function for saving to local storage and saving it in local storage
-// if(Array.isArray(storedArray)){
-//     citiesArray = storedArray;
-// }
-
-
 //function for the search button and the local storage
 $(document).ready(function(){
     $("#searchBtn").click(function(e){
         e.preventDefault();
         var searchCity = $("#searchCity").val();
-        myArray.push(searchCity)
+        // myArray.push(searchCity)
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
         console.log(myArray)
+        localStorage.getItem("#searchCity");
     })
-   
 })
 
 //function to try and append the searches on the html page 
@@ -30,7 +20,7 @@ $(document).ready(function(){
      ("searchCity").value;
 
      myArray.push(inputCityList);
-
+     //created pval for a list to descend the city names
      var pval = "";
 
      for (i=0; i<myArray.length; i++) {
@@ -38,6 +28,9 @@ $(document).ready(function(){
     }
     document.getElementById("cityList").innerHTML = pval;
  }
+
+ function resetData (){  
+ };
  
 
 //function to get the weather from the api weather
