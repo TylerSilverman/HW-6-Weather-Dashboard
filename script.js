@@ -31,6 +31,14 @@ $(document).ready(function(){
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'imperial'},
             // function to retrieve the data which shows up in the netweork part of the console log
+        }).then(function(response){
+            console.log(response);
+            
+            var cityName =$("<strong><h4><strong>").text(searchCity);
+            var speed = $("<h4>").text(response.wind.speed);
+            var temp =$("<h4>").text(response.main.temp);
+
+            $('.weather-info').append(cityName, speed, temp)
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
         console.log(myArray)
