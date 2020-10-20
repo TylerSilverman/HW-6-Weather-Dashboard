@@ -33,12 +33,16 @@ $(document).ready(function(){
             // function to retrieve the data which shows up in the netweork part of the console log
         }).then(function(response){
             console.log(response);
-            
-            var cityName =$("<strong><h4><strong>").text(searchCity);
-            var speed = $("<h4>").text(response.wind.speed);
-            var temp =$("<h4>").text(response.main.temp);
 
-            $('.weather-info').append(cityName, speed, temp)
+            // create a function to have the information post on the HTML document. 
+            var cityName =$("<strong><h4><strong>").text(searchCity);
+            var temp =$("<h4>").text(response.main.temp);
+            var speed = $("<h4>").text(response.wind.speed);
+            var humidity =$("<h4>").text(response.main.humidity);
+            var pressure = $("<h4>").text(response.main.pressure);
+
+            $('.weather-info').append(cityName, temp, speed, humidity, pressure)
+
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
         console.log(myArray)
@@ -71,8 +75,7 @@ $(document).ready(function(){
 
  
 
- //Need to create a function to have the information post on the HTML document. 
-    //create and .then statement to retrive the information 
+ //create and .then statement to retrive the information 
 function display (){
 
 }
