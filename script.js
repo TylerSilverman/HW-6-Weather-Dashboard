@@ -29,7 +29,7 @@ $(document).ready(function(){
             url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
             type: "GET",
             dataType: "JSON",
-            data: {q:searchCity, appid:apiKey, units:'metric'},
+            data: {q:searchCity, appid:apiKey, units:'imperial'},
             // function to retrieve the data which shows up in the netweork part of the console log
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
@@ -52,7 +52,7 @@ $(document).ready(function(){
         pval = pval + myArray[i] + "<br/>";
     };
     document.getElementById("cityList").innerHTML = pval;
-    
+
  };
 
  //function to clear out the search 
