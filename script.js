@@ -1,6 +1,14 @@
 var myArray = [];
 var searchCity = $("#searchCity");
-var apiKey = "760586900268b50d71c139dd75e4cb96"; 
+var apiKey = "f80ecd3a4607dd7ef4888b33f7c6f3e5"; 
+console.log(apiKey);
+
+$(document).ready(function(){
+    $("#searchBtn").submit(function(event){
+        ready(event);
+    });
+});
+
 
 //function for the search button and the local storage
 $(document).ready(function(){
@@ -9,18 +17,17 @@ $(document).ready(function(){
         var searchCity = $("#searchCity").val();
 
         $.ajax({
-            url:"http://api.openweathermap.org/data/2.5/weather?q=London,uk&APPID=760586900268b50d71c139dd75e4cb96",
+            url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
             type: "GET",
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'metric'},
             
             function (data){
-                var cityList = "";
+                var weatherForecast = "";
                 $.each(data.weather, function(data, val){
-                    cityList = "<p><br>" + data.name + val.icon + + data.main.temp + " &deg;C " + " | " + val.main + ", " + val.description
+                    weatherForecast = "<p><br>" + data.name + val.icon + data.main.temp + " &deg;C " + " | " + val.main + ", " + val.description
                 });
-                $("#searchCity").HTML(cityList);
-                console.log(apiKey);
+                $("#searchCity").HTML(weatherForecast);
             }
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
@@ -29,17 +36,6 @@ $(document).ready(function(){
         
     });
 });
-
-
-// function formatWeatherSearch (jsonObject){
-//     var city_name = jsonObject.name
-//     var city_weather = jsonObject.weather[0].main;
-//     var city_temperature = jsonObject.main.temp;
-
-//     $("#city-name").text(city_name);
-//     $("#city-weather").text(city_weather);
-//     $("#city-temperature").text(city_temperature+ " Celsius");
-// }
 
 //function to try and append the searches on the html page 
  function addData(){
