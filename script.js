@@ -12,7 +12,7 @@ $(document).ready(function(){
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
-    $('.weather-info').text(currentTime);
+    $('#current-weather').text(currentTime);
     
     
     var currentTime = moment().hour();
@@ -44,7 +44,7 @@ $(document).ready(function(){
             console.log(response);
 
             // function to have the information post on the HTML document. 
-                var cityName =$("<strong><h2><strong>").text("Current Weather For: " + searchCity);
+                var cityName =$("<strong><h3><strong>").text("Today's Weather For: " + searchCity);
                 var temp =$("<h6>").text("Temperature: " + response.main.temp + " *F ");
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
@@ -111,5 +111,3 @@ $(document).ready(function(){
 function display (){
 
 }
-    
- // Need to create a function to show the information adn also style the information 
