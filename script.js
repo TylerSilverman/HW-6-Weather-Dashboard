@@ -3,6 +3,8 @@ var searchCity = $("#searchCity");
 var apiKey = "f80ecd3a4607dd7ef4888b33f7c6f3e5"; 
 console.log(apiKey);
 var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+
 
 $(document).ready(function(){
     $("#searchBtn").submit(function(event){
@@ -29,6 +31,7 @@ $(document).ready(function(){
 
     function buildQueryUrl () {
         var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+        var uvUrl = uvUrl;
         var apiKey = {"apiKey": apiKey};
         apiKey.q = $("#searchCity").val().trim();
 
@@ -36,6 +39,7 @@ $(document).ready(function(){
 
         $.ajax({
             url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
+            uvUrl: uvUrl,
             type: "GET",
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'imperial'},
@@ -49,12 +53,14 @@ $(document).ready(function(){
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
+                var coord = $("<h6>").text("Coordinates: " + response.coord.lat + response.coord.lon + " Coordinates ");
             
 
-            $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure)
+            $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure, coord)
             //make another ajax call to get the 5 day forecast, generate the UI, 
             $.ajax({
                 url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
+                uvUrl: uvUrl,
                 type: "GET",
                 dataType: "JSON",
                 data: {q:searchCity, appid:apiKey, units:'imperial'},
