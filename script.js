@@ -36,12 +36,30 @@ $(document).ready(function(){
 
             // create a function to have the information post on the HTML document. 
             var cityName =$("<strong><h4><strong>").text(searchCity);
-            var temp =$("<h4>").text(response.main.temp);
-            var speed = $("<h4>").text(response.wind.speed);
+            var temp =$("<h4>").text("temp: " + response.main.temp);
+            var speed = $("<h4>").text("speed: " + response.wind.speed);
             var humidity =$("<h4>").text(response.main.humidity);
             var pressure = $("<h4>").text(response.main.pressure);
 
-            $('.weather-info').append(cityName, temp, speed, humidity, pressure)
+            $('.weather-info').empty().append(cityName, temp, speed, humidity, pressure)
+            //make another ajax call to get the 5 day forecast, generate the UI, 
+            $.ajax({
+                url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
+                type: "GET",
+                dataType: "JSON",
+                data: {q:searchCity, appid:apiKey, units:'imperial'},
+                // function to retrieve the data which shows up in the netweork part of the console log
+            }).then(function(forecast5Day){
+                console.log(forecast5Day);
+
+                var cityName =$("<strong><h4><strong>").text(searchCity);
+                var temp =$("<h4>").text("temp: " + response.main.temp);
+                var speed = $("<h4>").text("speed: " + response.wind.speed);
+                var humidity =$("<h4>").text(response.main.humidity);
+                var pressure = $("<h4>").text(response.main.pressure);
+    
+                $('#weather-section').empty().append(cityName, temp, speed, humidity, pressure)
+            });
 
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
