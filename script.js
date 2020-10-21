@@ -5,6 +5,8 @@ console.log(apiKey);
 var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 
+var createBtn = document.getElementById ("newBtn");
+
 
 $(document).ready(function(){
     $("#searchBtn").submit(function(event){
@@ -53,7 +55,7 @@ $(document).ready(function(){
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
-                var coord = $("<h6>").text("Coordinates: " + response.coord.lat + response.coord.lon + " Coordinates ");
+                var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
             
 
             $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure, coord)
@@ -73,8 +75,9 @@ $(document).ready(function(){
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
+                var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
     
-                $('#weather-section').empty().append(cityName, temp, humidity, speed, pressure)
+                $('#weather-section').empty().append(cityName, temp, humidity, speed, pressure, coord)
             });
 
         });
@@ -102,7 +105,7 @@ $(document).ready(function(){
         pval = pval + myArray[i] + "<br/>";
     };
     document.getElementById("cityList").innerHTML = pval;
-
+    
  };
 
  //function to clear out the search 
@@ -117,3 +120,8 @@ $(document).ready(function(){
 function display (){
 
 }
+// // create a button for input textbox
+// $('.createBtn').on("click", function() {
+//     var cityList = $("#searchCity").val().trim();
+//     console.log(cityList);
+// });
