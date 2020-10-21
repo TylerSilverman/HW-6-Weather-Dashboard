@@ -9,6 +9,15 @@ $(document).ready(function(){
         ready(event);
     });
 });
+//setting the current Time
+$(document).ready(function(){
+    var currentTime = moment().format('LLLL');
+    $('.weather-info').text(currentTime);
+    
+    
+    var currentTime = moment().hour();
+});
+
 //function for the search button and the local storage
 $(document).ready(function(){
     $("#searchBtn").click(function(e){
