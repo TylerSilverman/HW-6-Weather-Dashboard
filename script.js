@@ -20,13 +20,13 @@ $(document).ready(function(){
         }
     });
 });
-
-// function addData () {
-//     var searchCity = document.createElement("input");
-//     searchCity.setAttribute("type", "button");
-//     searchCity.setAttribute("value", "inputCityList");
-//     document.body.appendChild(searchCity);
-// }
+//creating an array for buttons
+function addButton () {
+    for (var i=0; i < myArray.length; i++) {
+        document.getElementById("newBtn").innerHTML += "<button>" + myArray[i] + "</button>";
+    }
+}
+addButton ();
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
@@ -137,9 +137,6 @@ $(document).ready(function(){
  
 
  //create and .then statement to retrive the information 
-function display (){
-
-}
 // // create a button for input textbox
 // $('.createBtn').on("click", function() {
 //     var cityList = $("#searchCity").val().trim();
