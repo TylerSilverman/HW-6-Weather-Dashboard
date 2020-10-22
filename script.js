@@ -11,8 +11,22 @@ var createBtn = document.getElementById ("newBtn");
 $(document).ready(function(){
     $("#searchBtn").submit(function(event){
         ready(event);
+
+        var searchBtn =$("#searchBtn").val();
+
+        if (searchBtn !=" "){
+        }else{
+            $("#error").innerhtml("Field Can Not be Empty");
+        }
     });
 });
+
+// function addData () {
+//     var searchCity = document.createElement("input");
+//     searchCity.setAttribute("type", "button");
+//     searchCity.setAttribute("value", "inputCityList");
+//     document.body.appendChild(searchCity);
+// }
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
@@ -42,12 +56,14 @@ $(document).ready(function(){
         $.ajax({
             url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
             uvUrl: uvUrl,
-            type: "GET",
+            method: "GET",
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'imperial'},
             // function to retrieve the data which shows up in the netweork part of the console log
         }).then(function(response){
             console.log(response);
+
+            for (var i=0; i < myArray.length; i+=5){
 
             // function to have the information post on the HTML document. 
                 var cityName =$("<strong><h3><strong>").text("Today's Weather For: " + searchCity);
@@ -59,16 +75,19 @@ $(document).ready(function(){
             
 
             $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure, coord)
+        }
             //make another ajax call to get the 5 day forecast, generate the UI, 
             $.ajax({
                 url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
                 uvUrl: uvUrl,
-                type: "GET",
+                method: "GET",
                 dataType: "JSON",
                 data: {q:searchCity, appid:apiKey, units:'imperial'},
                 // function to retrieve the data which shows up in the netweork part of the console log
             }).then(function(forecast5Day){
                 console.log(forecast5Day);
+
+                for (var i=0; i < myArray.length; i+=8){
 
                 var cityName =$("<strong><h2><strong>").text("The 5 Day Forecast for: " + searchCity);
                 var temp =$("<h6>").text("Temperature: " + response.main.temp + " *F ");
@@ -76,6 +95,7 @@ $(document).ready(function(){
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
                 var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
+                }
     
                 $('#weather-section').empty().append(cityName, temp, humidity, speed, pressure, coord)
             });
