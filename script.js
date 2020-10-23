@@ -15,19 +15,19 @@ $(document).ready(function(){
 
         var searchBtn =$("#searchBtn").val();
 
-        if (searchBtn !=" "){
-        }else{
-            $("#error").innerhtml("Field Can Not be Empty");
-        }
+        document.getElementById("Btn").innerHTML += "<button>" + myArray[i] + "</button>";
+
     });
 });
 //creating an array for buttons
-function addButton () {
-    for (var i=0; i < myArray.length; i++) {
-        document.getElementById("newBtn").innerHTML += "<button>" + myArray[i] + "</button>";
-    }
-}
-addButton ();
+// function addButton () {
+//     for (var i=0; i < myArray.length; i++) {
+//         document.getElementById("newBtn").innerHTML += "<button>" + myArray[i] + "</button>";
+//     }
+// }
+// addButton ();
+
+
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
@@ -53,10 +53,9 @@ $(document).ready(function(){
         apiKey.q = $("#searchCity").val().trim();
 
 };
-
+        //ajax function for the weather for the current day 
         $.ajax({
             url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
-            uvUrl: uvUrl,
             method: "GET",
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'imperial'},
@@ -77,10 +76,9 @@ $(document).ready(function(){
 
             $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure, coord)
         }
-            //make another ajax call to get the 5 day forecast, generate the UI, 
+            //make another ajax call to get the 5 day forecast, generate the UI, need to change to 5day forecast
         $.ajax({
                 url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
-                uvUrl: uvUrl,
                 method: "GET",
                 dataType: "JSON",
                 data: {q:searchCity, appid:apiKey, units:'imperial'},
@@ -106,6 +104,18 @@ $(document).ready(function(){
         localStorage.getItem('#searchCity');
     });
 });
+    //ajax function for the UV index
+    // $.ajax({
+    //     uvUrl:uvUrl,
+    //     method: "GET",
+    //     dataType: "JSON",
+    //     data: {q:searchCity, appid:apiKey, units:'imperial'},
+    //     // function to retrieve the data which shows up in the netweork part of the console log
+    //     }).then(function(uvResponse){
+    //     console.log(uvResponse);
+    // });
+
+
 // create the search button for each city that is created
 // function createBtn () {
 //     var cityName = $("<button>").text
