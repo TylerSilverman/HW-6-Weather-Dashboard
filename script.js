@@ -4,7 +4,7 @@ var apiKey = "f80ecd3a4607dd7ef4888b33f7c6f3e5";
 console.log(apiKey);
 var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
-// var forecastWeatherUrl =  "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+var forecastWeatherUrl =  "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 
 var createBtn = document.getElementById ("newBtn");
 
@@ -48,7 +48,6 @@ $(document).ready(function(){
 
     function buildQueryUrl () {
         var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
-        var uvUrl = uvUrl;
         var apiKey = {"apiKey": apiKey};
         apiKey.q = $("#searchCity").val().trim();
 
