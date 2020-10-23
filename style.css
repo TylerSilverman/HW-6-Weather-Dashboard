@@ -2,3 +2,8 @@
     box-sizing: content-box;
     box-sizing: border-box;
 }
+
+. {
+    padding: .25rem;
+    border: black solid 1px;
+}

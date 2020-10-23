@@ -4,36 +4,14 @@ var apiKey = "f80ecd3a4607dd7ef4888b33f7c6f3e5";
 console.log(apiKey);
 var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
-var forecastWeatherUrl =  "http://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+// var forecastWeatherUrl =  "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 
 var createBtn = document.getElementById ("newBtn");
-
-
-$(document).ready(function(){
-    $("#searchBtn").submit(function(event){
-        ready(event);
-
-        var searchBtn =$("#searchBtn").val();
-
-        document.getElementById("Btn").innerHTML += "<button>" + myArray[i] + "</button>";
-
-    });
-});
-//creating an array for buttons
-// function addButton () {
-//     for (var i=0; i < myArray.length; i++) {
-//         document.getElementById("newBtn").innerHTML += "<button>" + myArray[i] + "</button>";
-//     }
-// }
-// addButton ();
-
 
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
     $('#current-weather').text(currentTime);
-    
-    
     var currentTime = moment().hour();
 });
 
@@ -42,16 +20,16 @@ $(document).ready(function(){
     $("#searchBtn").click(function(e){
         e.preventDefault();
         var searchCity = $("#searchCity").val();
-        var url = buildQueryUrl ();
+        buildQueryUrl ();
 
         //function for the ajax and to retrive the infomation from the open weather map site with the API key
 
-    function buildQueryUrl () {
+    function buildQueryUrl ()  {
         var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+        var uvUrl = uvUrl;
         var apiKey = {"apiKey": apiKey};
         apiKey.q = $("#searchCity").val().trim();
-
-};
+    };
         //ajax function for the weather for the current day 
         $.ajax({
             url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
@@ -65,7 +43,7 @@ $(document).ready(function(){
             for (var i=0; i < myArray.length; i+=5){
 
                 // function to have the information post on the HTML document. 
-                var cityName =$("<strong><h3><strong>").text(searchCity);
+                var cityName =$("<strong><h3><strong>").attr("class", "").text(searchCity);
                 var temp =$("<h6>").text("Temperature: " + response.main.temp + " *F ");
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
@@ -103,24 +81,7 @@ $(document).ready(function(){
         localStorage.getItem('#searchCity');
     });
 });
-    //ajax function for the UV index
-    // $.ajax({
-    //     uvUrl:uvUrl,
-    //     method: "GET",
-    //     dataType: "JSON",
-    //     data: {q:searchCity, appid:apiKey, units:'imperial'},
-    //     // function to retrieve the data which shows up in the netweork part of the console log
-    //     }).then(function(uvResponse){
-    //     console.log(uvResponse);
-    // });
 
-
-// create the search button for each city that is created
-// function createBtn () {
-//     var cityName = $("<button>").text
-//     cityName.addClass("cityNameBtn btn-block");
-//     weather-info.append(cityName);
-// };
 //function to try and append the searches on the html page 
  function addData(){
      var inputCityList = document.getElementById 
@@ -135,19 +96,11 @@ $(document).ready(function(){
     };
     document.getElementById("cityList").innerHTML = pval;
     
- };
+    };
 
  //function to clear out the search 
- function clear (){
-     $("#weather-section").empty();
- };
- $("#clearCityBtn").on("click", clear);
+    function clear (){
+        $("#weather-section").empty();
+    };
+    $("#clearCityBtn").on("click", clear);
 
- 
-
- //create and .then statement to retrive the information 
-// // create a button for input textbox
-// $('.createBtn').on("click", function() {
-//     var cityList = $("#searchCity").val().trim();
-//     console.log(cityList);
-// });
