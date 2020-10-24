@@ -8,3 +8,8 @@
     color: black;
     box-sizing: border-box;
 }
+
+#cityHistoryItem {
+    padding:5px;
+    
+}

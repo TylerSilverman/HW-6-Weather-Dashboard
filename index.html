@@ -39,23 +39,24 @@
         <h6><strong>Search For City</strong></h6>
         <div class="row">
           <input class="form-control col-sm-8  ml-3" type= "text" value= "" placeholder="Search City">
-          <button class=" col-sm-2 btn-primary"><i class= "fas fa-search"></i></button>
+          <button class=" col-sm-2 btn-primary"><i class= "fa fa-search"></i></button>
           <!-- <input class="form-control col-sm-8  ml-3" type= "text" value= "" placeholder="Clear City">
           <button class=" col-sm-8 btn-secondary"><i class= "fas fa-clear"></i></button> -->
         </div>
       </div>
       <div class="list group col-md-10 cityHistory">
-        <h6><strong>View City History</strong></h6>
-        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Orlando"></a>
-        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="New York"></a>
-        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Washington"></a>
-        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Boston"></a>
+        <h6><strong>Recent City Searches</strong></h6>
+        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Orlando">Orlando</a>
+        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="New York">New York</a>
+        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Washington">Washington</a>
+        <a href = "#" class="list-group-item list-group-item-action cityHistoryItem" data-city="Boston">Boston</a>
       </div>
     </div>
-  <div class= "col-md-9">
+  <div class= "col-md-6">
     <div class = "card mb-4 weatherDetailsMain">
       <div class = "card body">
-        <h2><span class= "city"></span> <span class = "date"></span> <img class="icon" src="" alt=""></img></h2>
+        <h4><span class= "city"></span> <span class = "date"></span> <img class="icon" src="" alt=""></img></h4>
+        <strong><p class="date" id="currentDate"></p></strong>
         <p class="temperature">Temperature: <span></span>*F</p>
         <p class="humid">Humidity: <span></span>%</p>
         <p class="windSpeed">Wind Speed: <span></span>MPH</p>
