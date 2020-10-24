@@ -2,7 +2,7 @@ var myArray = [];
 var searchCity = $("#searchCity");
 var apiKey = "f80ecd3a4607dd7ef4888b33f7c6f3e5"; 
 console.log(apiKey);
-var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+var url = "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 // var forecastWeatherUrl =  "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
 
@@ -47,7 +47,7 @@ $(document).ready(function(){
         //function for the ajax and to retrive the infomation from the open weather map site with the API key
 
     function buildQueryUrl () {
-        var url = "http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+        var url = "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
         var uvUrl = uvUrl;
         var apiKey = {"apiKey": apiKey};
         apiKey.q = $("#searchCity").val().trim();
@@ -55,7 +55,7 @@ $(document).ready(function(){
 };
         //ajax function for the weather for the current day 
         $.ajax({
-            url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
+            url:"https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
             method: "GET",
             dataType: "JSON",
             data: {q:searchCity, appid:apiKey, units:'imperial'},
@@ -67,18 +67,19 @@ $(document).ready(function(){
 
                 // function to have the information post on the HTML document. 
                 var cityName =$("<strong><h3><strong>").text(searchCity);
-                var temp =$("<h6>").text("Temperature: " + response.main.temp + " *F ");
+                var temp_min =$("<h6>").text("Temperature: " + response.main.temp_min + " *F ");
+                var temp_max =$("<h6>").text("Temperature: " + response.main.temp_max + " *F ");
                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
                 var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
             
 
-            $('.weather-info').empty().append(cityName, temp, humidity, speed, pressure, coord)
+            $('.weather-info').empty().append(cityName, temp_max, temp_min, humidity, speed, pressure, coord)
         }
             //make another ajax call to get the 5 day forecast, generate the UI, need to change to 5day forecast
         $.ajax({
-                url:"http://api.openweathermap.org/data/2.5/weather?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
+                url:"https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
                 method: "GET",
                 dataType: "JSON",
                 data: {q:searchCity, appid:apiKey, units:'imperial'},
@@ -89,14 +90,15 @@ $(document).ready(function(){
                 for (var i=0; i < myArray.length; i+=8){
 
                     var cityName =$("<strong><h2><strong>").text(searchCity);
-                    var temp =$("<h6>").text("Temperature: " + response.main.temp + " *F ");
+                    var temp_min =$("<h6>").text("Temperature: " + response.main.temp_min + " *F ");
+                    var temp_max =$("<h6>").text("Temperature: " + response.main.temp_max + " *F ");
                     var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                     var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                     var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
                     var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
                     }
         
-                $('#weather-section').empty().append(cityName, temp, humidity, speed, pressure, coord)
+                $('#weather-section').empty().append(cityName, temp_max, temp_min, humidity, speed, pressure, coord)
             });
         });
         localStorage.setItem('#searchCity',JSON.stringify(myArray));
