@@ -2,11 +2,12 @@ $(document).ready(function(){
     var searchArray = [];
     var appid = "f80ecd3a4607dd7ef4888b33f7c6f3e5"; 
     var searchInput = $(".search Input");
-    var cityHistory =$(".cityHistory");
+    var city =$(".cityHistory");
     var searchBtn = $(".search button");
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
-
+    
+    //function for the current weather 
     function getCurrentWeather (city){
         console.log(city);
         
@@ -16,8 +17,40 @@ $(document).ready(function(){
             method: "GET"
         }).then(function(response){
             console.log(response)
+
+            weatherDetailsMain.find(".city").text(city);
+            weatherDetailsMain.find(".temperature span").text(response.main.temp);
+            weatherDetailsMain.find(".humid span").text(response.main.humidity); 
+            weatherDetailsMain.find(".windSpeed span").text(response.wind.speed);
+            weatherDetailsMain.find(".uvIndex span").attr("class", " ").text("");
+            getUVIndex(response.coord.lat, response.coord.lon);
+
+            weatherDetailsMain.show();
         }).catch(function(err){
-            console.log("Error");
+            alert("Cant Find City");
+        });
+    }
+    //function for the UV index 
+    function getUVIndex (lat, lon){
+        console.log(city);
+        
+        var queryUrl = "https://api.openweathermap.org/data/2.5/uvi?appid=" + appid + "&lat=" + lat + "&lon=" + lon; 
+        $.ajax({
+            url: queryUrl,
+            method: "GET"
+        }).then(function(response){
+            console.log(response)
+            //creeated if statement to determine the uvIndex dannger zone
+            weatherDetailsMain.find(".uvIndex span").text(response.value);
+            if(response.value > 6){
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
+            }else if (response.value < 3){
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-primary").addClass("text-white");
+            }else{
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-success").addClass("text-white");
+            }
+        }).catch(function(err){
+            console("Cant Find City");
         });
     }
 
@@ -39,17 +72,6 @@ $(document).ready(function(){
 
 })
 
-// $(document).ready(function(){
-//     $("#searchBtn").submit(function(event){
-//         ready(event);
-
-//         var searchBtn =$("#searchBtn").val();
-
-//         document.getElementById("Btn").innerHTML += "<button>" + myArray[i] + "</button>";
-
-//     });
-// });;
-
 
 // //setting the current Time
 // $(document).ready(function(){
@@ -59,45 +81,6 @@ $(document).ready(function(){
     
 //     var currentTime = moment().hour();
 // });
-
-// //function for the search button and the local storage
-// $(document).ready(function(){
-//     $("#searchBtn").click(function(e){
-//         e.preventDefault();
-//         var searchCity = $("#searchCity").val();
-//         var url = buildQueryUrl ();
-
-//         //function for the ajax and to retrive the infomation from the open weather map site with the API key
-
-//     function buildQueryUrl () {
-//         var url = "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
-//         var uvUrl = uvUrl;
-//         var apiKey = {"apiKey": apiKey};
-//         apiKey.q = $("#searchCity").val().trim();
-
-// };
-//         //ajax function for the weather for the current day 
-//         $.ajax({
-//             url:"https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
-//             method: "GET",
-//             dataType: "JSON",
-//             data: {q:searchCity, appid:apiKey, units:'imperial'},
-//             // function to retrieve the data which shows up in the netweork part of the console log
-//             }).then(function(response){
-//             console.log(response);
-
-//             for (var i=0; i < myArray.length; i+=5){
-
-//                 // function to have the information post on the HTML document. 
-//                 var cityName =$("<strong><h3><strong>").text(searchCity);
-//                 var temp_min =$("<h6>").text("Temperature: " + response.main.temp_min + " *F ");
-//                 var temp_max =$("<h6>").text("Temperature: " + response.main.temp_max + " *F ");
-//                 var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
-//                 var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
-//                 var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
-//                 var coord = $("<h6>").text("Coordinates: Latitude: " + response.coord.lat + "  " + " " + " Longitude: " +  response.coord.lon);
-            
-
 //             $('.weather-info').empty().append(cityName, temp_max, temp_min, humidity, speed, pressure, coord)
 //         }
 //             //make another ajax call to get the 5 day forecast, generate the UI, need to change to 5day forecast
@@ -129,22 +112,6 @@ $(document).ready(function(){
 //         localStorage.getItem('#searchCity');
 //     });
 // });
-
-// //function to try and append the searches on the html page 
-//  function addData(){
-//      var inputCityList = document.getElementById 
-//      ("searchCity").value;
-
-//      myArray.push(inputCityList);
-//      //created pval for a list to descend the city names
-//      var pval = "";
-
-//      for (i=0; i<myArray.length; i++) {
-//         pval = pval + myArray[i] + "<br/>";
-//     };
-//     document.getElementById("cityList").innerHTML = pval;
-    
-//  };
 
 //  //function to clear out the search 
 //  function clear (){
