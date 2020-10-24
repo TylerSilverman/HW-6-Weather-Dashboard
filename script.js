@@ -7,6 +7,14 @@ $(document).ready(function(){
     var searchBtn = $(".search button");
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
+
+    function CityHistory (){
+        var searchArray = JSON.parse(localStorage.getItem('cityHistory'));
+        if(searchArray) cityHistory = searchArray;
+
+        cityHistory.find("a").remove();
+        cityHistory.append(cityHistory)
+    };
     
     //function for the current weather 
     function getCurrentWeather (city){
@@ -101,8 +109,6 @@ $(document).ready(function(){
 
     weatherDetailsMain.hide();
     forecast.hide();
+    CityHistory();
 
 });
-        // localStorage.setItem('#searchCity',JSON.stringify(searchArray));
-        // console.log(searchArray)
-        // localStorage.getItem('#searchCity');
