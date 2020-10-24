@@ -7,23 +7,10 @@ var uvUrl = "http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appi
 
 var createBtn = document.getElementById ("newBtn");
 
-
-$(document).ready(function(){
-    $("#searchBtn").submit(function(event){
-        ready(event);
-
-        var searchBtn =$("#searchBtn").val(createBtn);
-        
-
-    });
-});
-
 //setting the current Time
 $(document).ready(function(){
     var currentTime = moment().format('LLLL');
     $('#current-weather').text(currentTime);
-    
-    
     var currentTime = moment().hour();
 });
 
@@ -31,15 +18,15 @@ $(document).ready(function(){
 $(document).ready(function(){
     $("#searchBtn").click(function(e){
         e.preventDefault();
-        var searchCity = $("#searchCity").val();
-        var url = buildQueryUrl ();
+        searchCity = $("#searchCity").val();
+        url = buildQueryUrl ();
 
         //function for the ajax and to retrive the infomation from the open weather map site with the API key
 
         function buildQueryUrl () {
-        var url = "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
-        var uvUrl = uvUrl;
-        var apiKey = {"apiKey": apiKey};
+        url = "https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5";
+        uvUrl = uvUrl;
+        apiKey = {"apiKey": apiKey};
         apiKey.q = $("#searchCity").val().trim();
 
 
@@ -51,16 +38,15 @@ $(document).ready(function(){
             data: {q:searchCity, appid:apiKey, units:'imperial'},
             // function to retrieve the data which shows up in the netweork part of the console log
             }).then(function(response){
-            console.log(response);
+            // console.log(response);
 
             
-
                 for (var i=0; i < myArray.length; i+=5){
 
                     // function to have the information post on the HTML document. 
                     var cityName =$("<strong><h3><strong>").text(city.coord.name);
-                    var tempMin =$("<h6>").text("Temperature: " + list.main.temp_min + " *F ");
-                    var tempMax =$("<h6>").text("Temperature: " + list.main.temp_max + " *F ");
+                    var tempMin =$("<h6>").text("Temperature: " + response.main.temp_min + " *F ");
+                    var tempMax =$("<h6>").text("Temperature: " + response.main.temp_max + " *F ");
                     var humidity =$("<h6>").text("Humidity: " + response.main.humidity + " % ");
                     var speed = $("<h6>").text("Wind Speed: " + response.wind.speed + " MPH ");
                     var pressure = $("<h6>").text("Pressure: " + response.main.pressure + " Air ");
@@ -69,7 +55,7 @@ $(document).ready(function(){
 
                     $('.weather-info').empty().append(cityName, tempMin, tempMax, humidity, speed, pressure, coord)
                 }
-        $.ajax({
+            $.ajax({
                 url:"https://api.openweathermap.org/data/2.5/forecast?id=524901&appid=f80ecd3a4607dd7ef4888b33f7c6f3e5",
                 method: "GET",
                 dataType: "JSON",
@@ -103,3 +89,9 @@ $(document).ready(function(){
     };
     $("#clearCityBtn").on("click", clear);
 });
+
+    function submit () {
+        $("#cityList").append().newBtn;
+    };
+    $("#searchBtn").on("click", submit);
+
