@@ -42,7 +42,7 @@ $(document).ready(function(){
             console.log(response)
 
             weatherDetailsMain.find(".city").text(city);
-            weatherDetailsMain.find(".icon").attr("src", "https://openweather.org/img/w/" + response.weather[0].icon + ".png");
+            weatherDetailsMain.find(".icon").attr("src", "https://openweather.org/img/wn/" + response.weather[0].icon + ".png");
             weatherDetailsMain.find(".temperature span").text(response.main.temp);
             weatherDetailsMain.find(".humid span").text(response.main.humidity); 
             weatherDetailsMain.find(".windSpeed span").text(response.wind.speed);
@@ -96,7 +96,7 @@ $(document).ready(function(){
             console.log(filteredList);
             filteredList.forEach(function(date,i){
                 $(".day" + (i+1)).find(".date").text(date.dt_txt.slice(0, date.dt_txt.indexOf(" ")));
-                $(".day" + (i+1)).find(".icon").attr("src", "http://openweather.org/img/w/" + date.weather[0].icon + ".png");
+                $(".day" + (i+1)).find(".icon").attr("src", "https://openweather.org/img/wn/" + date.weather[0].icon + ".png");
                 $(".day" + (i+1)).find(".temperature span").text(date.main.temp);
                 $(".day" + (i+1)).find(".humid span").text(date.main.humidity);
     
