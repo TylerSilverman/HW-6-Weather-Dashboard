@@ -7,6 +7,9 @@ $(document).ready(function(){
     var searchBtn = $(".search button");
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
+    var weatherIcons = "https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2";
+    
+    $("#icon").attr('src, icon');
 
     //added in current day time to show for the day 
     var timeNow = moment().format('LL');
@@ -14,16 +17,16 @@ $(document).ready(function(){
 
     var timeNow = moment().hour();
 
-    function CityHistory (){
+    function cityHistory (){
         // var searchArray = localStorage.getItem("cityHistory");
         // $("cityHistory").val(searchArray);
 
         var searchArray = JSON.parse(localStorage.getItem('cityHistory'));
-        if(searchArray) cityHistory = searchArray;
+        if(searchArray) city = searchArray;
 
-        cityHistory.find("a").remove();
-        cityHistory.forEach(function(item){
-        cityHistory.append('"a href = "#" class="list-group-item list-group-item-action cityHistoryItem"' + item + '">' + item + '</a');
+        city.find("a").remove();
+        city.forEach(function(item){
+        city.append('"a href = "#" class="list-group-item list-group-item-action cityHistoryItem"' + item + '">' + item + '</a');
         });
     };
     
@@ -39,11 +42,11 @@ $(document).ready(function(){
             console.log(response)
 
             weatherDetailsMain.find(".city").text(city);
-            weatherDetailsMain.find(".icon").attr("src", "http://openweather.org/img/w" + response.weather[0].icon + ".png");
+            weatherDetailsMain.find(".icon").attr("src", "https://openweather.org/img/w/" + response.weather[0].icon + ".png");
             weatherDetailsMain.find(".temperature span").text(response.main.temp);
             weatherDetailsMain.find(".humid span").text(response.main.humidity); 
             weatherDetailsMain.find(".windSpeed span").text(response.wind.speed);
-            weatherDetailsMain.find(".uvIndex span").attr("src", "http://openweather.org/img/w" + response.weather[0].icon + ".png");
+            weatherDetailsMain.find(".uvIndex span").text("src");
             getUVIndex(response.coord.lat, response.coord.lon);
 
             weatherDetailsMain.show();
@@ -65,10 +68,10 @@ $(document).ready(function(){
             console.log(response)
             //creeated if statement to determine the uvIndex dannger zone
             weatherDetailsMain.find(".uvIndex span").text(response.value);
-            if(response.value > 5){
-                weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
-            }else if (response.value < 3){
+            if(response.value > 3){
                 weatherDetailsMain.find(".uvIndex span").addClass("bg-primary").addClass("text-white");
+            }else if (response.value < 8){
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
             }else{
                 weatherDetailsMain.find(".uvIndex span").addClass("bg-success").addClass("text-white");
             }
@@ -93,7 +96,7 @@ $(document).ready(function(){
             console.log(filteredList);
             filteredList.forEach(function(date,i){
                 $(".day" + (i+1)).find(".date").text(date.dt_txt.slice(0, date.dt_txt.indexOf(" ")));
-                $(".day" + (i+1)).find(".icon").attr("src", "http://openweather.org/img/w" + date.weather[0].icon + ".png");
+                $(".day" + (i+1)).find(".icon").attr("src", "http://openweather.org/img/w/" + date.weather[0].icon + ".png");
                 $(".day" + (i+1)).find(".temperature span").text(date.main.temp);
                 $(".day" + (i+1)).find(".humid span").text(date.main.humidity);
     
@@ -122,6 +125,6 @@ $(document).ready(function(){
 
     weatherDetailsMain.hide();
     forecast.hide();
-    CityHistory();
+    cityHistory.show();
 
 });

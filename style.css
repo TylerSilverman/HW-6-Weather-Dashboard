@@ -9,7 +9,8 @@
     box-sizing: border-box;
 }
 
-#cityHistoryItem {
+#forecastDayWeather{
     padding:5px;
-    
+    margin: 2px;
+
 }
