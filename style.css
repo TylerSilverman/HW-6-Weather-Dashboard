@@ -21,3 +21,10 @@
     font-style: normal;
     box-sizing: border-box;
 }
+
+.linkedImg {
+    grid-row: 2px;
+    box-sizing: border-box;
+    box-sizing: content-box;
+    margin-left: auto;
+}
