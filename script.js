@@ -44,6 +44,7 @@ $(document).ready(function(){
             weatherDetailsMain.find(".city").text(city);
             weatherDetailsMain.find(".icon").attr("src", weatherIcons + response.weather[0].icon + ".png");
             weatherDetailsMain.find(".temperature span").text(response.main.temp);
+            weatherDetailsMain.find(".temperatureFeelLike span").text(response.main.feels_like);
             weatherDetailsMain.find(".humid span").text(response.main.humidity); 
             weatherDetailsMain.find(".windSpeed span").text(response.wind.speed);
             weatherDetailsMain.find(".uvIndex span").text("src");
@@ -68,12 +69,12 @@ $(document).ready(function(){
             console.log(response)
             //creeated if statement to determine the uvIndex dannger zone
             weatherDetailsMain.find(".uvIndex span").text(response.value);
-            if(response.value > 3){
+            if(response.value > 2){
                 weatherDetailsMain.find(".uvIndex span").addClass("bg-primary").addClass("text-white");
-            }else if (response.value < 8){
+            }else if (response.value < 7){
                 weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
             }else{
-                weatherDetailsMain.find(".uvIndex span").addClass("bg-success").addClass("text-white");
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-danger").addClass("text-white");
             }
         }).catch(function(err){
             console("Cant Find City");
@@ -98,8 +99,10 @@ $(document).ready(function(){
                 $(".day" + (i+1)).find(".date").text(date.dt_txt.slice(0, date.dt_txt.indexOf(" ")));
                 $(".day" + (i+1)).find(".icon").attr("src", weatherIcons + date.weather[0].icon + ".png");
                 $(".day" + (i+1)).find(".temperature span").text(date.main.temp);
+                $(".day" + (i+1)).find(".temperatureFeelLike span").text(date.main.feels_like);
                 $(".day" + (i+1)).find(".humid span").text(date.main.humidity);
                 $(".day" + (i+1)).find(".windSpeed span").text(date.wind.speed);
+                $(".day" + (i+1)).find(".windDirection span").text(date.wind.deg);
     
             });
 
