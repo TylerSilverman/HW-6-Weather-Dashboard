@@ -7,7 +7,7 @@ $(document).ready(function(){
     var searchBtn = $(".search button");
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
-    var weatherIcons = "https://openweathermap.org/weather-conditions#Weather-Condition-Codes-2";
+    var weatherIcons = "https://openweathermap.org/img/wn/";
     
     $("#icon").attr('src, icon');
 
@@ -42,7 +42,7 @@ $(document).ready(function(){
             console.log(response)
 
             weatherDetailsMain.find(".city").text(city);
-            weatherDetailsMain.find(".icon").attr("src", "https://openweather.org/img/wn/" + response.weather[0].icon + ".png");
+            weatherDetailsMain.find(".icon").attr("src", weatherIcons + response.weather[0].icon + ".png");
             weatherDetailsMain.find(".temperature span").text(response.main.temp);
             weatherDetailsMain.find(".humid span").text(response.main.humidity); 
             weatherDetailsMain.find(".windSpeed span").text(response.wind.speed);
@@ -96,7 +96,7 @@ $(document).ready(function(){
             console.log(filteredList);
             filteredList.forEach(function(date,i){
                 $(".day" + (i+1)).find(".date").text(date.dt_txt.slice(0, date.dt_txt.indexOf(" ")));
-                $(".day" + (i+1)).find(".icon").attr("src", "https://openweather.org/img/wn/" + date.weather[0].icon + ".png");
+                $(".day" + (i+1)).find(".icon").attr("src", weatherIcons + date.weather[0].icon + ".png");
                 $(".day" + (i+1)).find(".temperature span").text(date.main.temp);
                 $(".day" + (i+1)).find(".humid span").text(date.main.humidity);
     
