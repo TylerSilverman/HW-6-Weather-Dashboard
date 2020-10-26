@@ -1,28 +1,23 @@
 .card {
     box-sizing: content-box;
     box-sizing: border-box;
-    background-color:yellow;
+    background-color:lightblue;
 }
 
 .forecast {
-    background-color: rgb(63, 227, 230);
+    background-color:rgb(253, 205, 244);
+    padding:15px;
+    margin-top: 2px;
+    box-sizing: border-box;
+    box-shadow: black;
+    font-style: normal;
+
 
 }
-
-/* .day1, .day2, .day3, .day4, .day5 {
-    background-color:white;
-
-} */
 
 .cityName {
     padding: .25rem;
     color: black;
     font-style: normal;
     box-sizing: border-box;
-}
-
-#forecastDayWeather{
-    padding:15px;
-    margin-top: 2px;
-
 }

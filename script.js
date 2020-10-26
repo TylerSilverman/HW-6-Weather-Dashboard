@@ -99,6 +99,7 @@ $(document).ready(function(){
                 $(".day" + (i+1)).find(".icon").attr("src", weatherIcons + date.weather[0].icon + ".png");
                 $(".day" + (i+1)).find(".temperature span").text(date.main.temp);
                 $(".day" + (i+1)).find(".humid span").text(date.main.humidity);
+                $(".day" + (i+1)).find(".windSpeed span").text(date.wind.speed);
     
             });
 
