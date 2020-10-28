@@ -69,14 +69,14 @@ $(document).ready(function(){
             console.log(response)
             //creeated if statement to determine the uvIndex dannger zone
             weatherDetailsMain.find(".uvIndex span").text(response.value);
-            if(response.value < 8){
-                weatherDetailsMain.find(".uvIndex span").addClass("bg-danger").addClass("text-white");
-            }else if (response.value >= 5){
-                weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
-            // }else if (response.value < 3){
-            //         weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
-            }else{
+            if(response.value < 1){
                 weatherDetailsMain.find(".uvIndex span").addClass("bg-success").addClass("text-white");
+            }else if (response.value > 5){
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-danger").addClass("text-white");
+            }else if (response.value < 3){
+                    weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
+            }else{
+                weatherDetailsMain.find(".uvIndex span").addClass("bg-warning").addClass("text-white");
             }
         }).catch(function(err){
             console("Cant Find City");
