@@ -1,10 +1,10 @@
 $(document).ready(function(){
     var searchArray = [];
     var appid = "b7ca59da7f0fc823f65b65547e3d223e"; 
-    var searchInput = $(".search Input");
+    var searchInput = $(".searchInput");
     var city =$(".cityHistory");
     var cityHistory =$(".cityHistoryItem");
-    var searchBtn = $(".search button");
+    var searchBtn = $(".searchButton");
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
     var weatherIcons = "https://openweathermap.org/img/wn/";
@@ -16,7 +16,8 @@ $(document).ready(function(){
     $("#currentDate").text(timeNow);
 
     var timeNow = moment().hour();
-
+    
+    //use this function to create the button from the city searches
     function cityHistory (){
         // var searchArray = localStorage.getItem("cityHistory");
         // $("cityHistory").val(searchArray);
@@ -117,7 +118,6 @@ $(document).ready(function(){
     searchBtn.on("click", function(){
         if(searchInput.val()){
             getCurrentWeather(searchInput.val());
-            searchInput.append();
             searchInput.val("");
         }
     });
