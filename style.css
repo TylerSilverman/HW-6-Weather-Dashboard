@@ -1,28 +1,42 @@
+/* //this focuses on the forecast 5 day weather */
 .card {
     box-sizing: content-box;
     box-sizing: border-box;
     background-color:lightskyblue;
 }
-
-.cardImages {
-    background-color:lightskyblue;
+/* //focuses on the images */
+.cardImages1 {
+    background-color: whitesmoke;
+    margin: 5px;
 }
-
+/* //focuses on the images */
+.cardImages2 {
+    background-color: whitesmoke;
+    margin: 15px;
+}
+/* //focus on forecast weather background */
 .forecast {
-    padding:15px;
-    margin-top: 2px;
-    box-sizing: border-box;
+    /* padding:5px; */
+    margin: 2px;
+    /* box-sizing: border-box; */
     box-shadow: black;
     font-style: normal;
-
-
+    box-sizing: content-box;
 }
+
+/* .forecastDayWeather {
+    box-sizing: border-box;
+    box-sizing: content-box;
+    width: 120px;
+
+} */
 
 .cityName {
     padding: .25rem;
     color: black;
     font-style: normal;
     box-sizing: border-box;
+
 }
 
 .linkedImg {
@@ -31,6 +45,12 @@
     box-sizing: content-box;
     margin-left: auto;
 }
+
+.card-colums {
+    box-sizing: border-box;
+    box-sizing: content-box;
+}
+
 
 @media screen and (max-width:800px) {
     #left, #middle, #right {
