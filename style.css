@@ -1,11 +1,14 @@
 .card {
     box-sizing: content-box;
     box-sizing: border-box;
-    background-color:lightblue;
+    background-color:lightskyblue;
+}
+
+.cardImages {
+    background-color:lightskyblue;
 }
 
 .forecast {
-    background-color:rgb(253, 205, 244);
     padding:15px;
     margin-top: 2px;
     box-sizing: border-box;
@@ -28,3 +31,9 @@
     box-sizing: content-box;
     margin-left: auto;
 }
+
+@media screen and (max-width:800px) {
+    #left, #middle, #right {
+      width:100%; 
+    }
+  }

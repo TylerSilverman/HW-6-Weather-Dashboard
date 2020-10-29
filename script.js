@@ -8,6 +8,7 @@ $(document).ready(function(){
     var weatherDetailsMain = $(".weatherDetailsMain");
     var forecast =$(".forecast"); 
     var weatherIcons = "https://openweathermap.org/img/wn/";
+    var searchInput2 = $(".searchInput2");
     
     $("#icon").attr('src, icon');
 
@@ -115,12 +116,30 @@ $(document).ready(function(){
         });
     }
 
+    //this function is calling the city search 
     searchBtn.on("click", function(){
         if(searchInput.val()){
             getCurrentWeather(searchInput.val());
             searchInput.val("");
         }
     });
+
+    //this function is calling the state search
+    searchBtn.on("click", function(){
+        if(searchInput2.val()){
+            getCurrentWeather(searchInput2.val());
+            searchInput2.val("");
+        }
+    });
+    //this is calling both city and state functions
+    // searchBtn.on("click", function(){
+    //     if(searchInput.val() + searchInput2.val()){
+    //         getCurrentWeather(searchInput.val() +searchInput2.val());
+    //         searchInput.val(""), searchInput2.val("");
+    //     }
+    // });
+
+    
 
     city.on("click", ".cityHistoryItem", function(){
         if($(this).attr("data-city")){
