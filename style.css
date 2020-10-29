@@ -6,7 +6,8 @@
 }
 /* //focuses on the images */
 .cardImages1 {
-    background-color: whitesmoke;
+    background-color: rgb(172, 172, 172);
+    align-items: center;
     margin: 5px;
 }
 /* //focuses on the images */
@@ -16,27 +17,17 @@
 }
 /* //focus on forecast weather background */
 .forecast {
-    /* padding:5px; */
     margin: 2px;
-    /* box-sizing: border-box; */
     box-shadow: black;
     font-style: normal;
     box-sizing: content-box;
 }
-
-/* .forecastDayWeather {
-    box-sizing: border-box;
-    box-sizing: content-box;
-    width: 120px;
-
-} */
 
 .cityName {
     padding: .25rem;
     color: black;
     font-style: normal;
     box-sizing: border-box;
-
 }
 
 .linkedImg {

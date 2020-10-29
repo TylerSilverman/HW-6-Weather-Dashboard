@@ -150,6 +150,7 @@ $(document).ready(function(){
 
     weatherDetailsMain.hide();
     forecast.hide();
-    cityHistory.show();
+    cityHistory.hide();
+    
 
 });
