@@ -121,6 +121,7 @@ $(document).ready(function(){
         if(searchInput.val()){
             getCurrentWeather(searchInput.val());
             searchInput.val("");
+            $(".card").show();
         }
     });
 
@@ -129,18 +130,10 @@ $(document).ready(function(){
         if(searchInput2.val()){
             getCurrentWeather(searchInput2.val());
             searchInput2.val("");
+            $(".card").show();
         }
     });
-    //this is calling both city and state functions
-    // searchBtn.on("click", function(){
-    //     if(searchInput.val() + searchInput2.val()){
-    //         getCurrentWeather(searchInput.val() +searchInput2.val());
-    //         searchInput.val(""), searchInput2.val("");
-    //     }
-    // });
-
-    
-
+   
     city.on("click", ".cityHistoryItem", function(){
         if($(this).attr("data-city")){
             getCurrentWeather($(this).attr("data-city"));
@@ -151,6 +144,7 @@ $(document).ready(function(){
     weatherDetailsMain.hide();
     forecast.hide();
     cityHistory.hide();
+    $(".card").hide();
     
 
 });
